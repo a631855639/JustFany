@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/line_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/line_query"
+            android:textSize="20.0sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:text="@string/line_query_wraning"
+                android:textSize="15.0sp" />
+
+            <EditText
+                android:id="@+id/et_line"
+                android:layout_width="100.0dip"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="690" />
+
+            <Button
+                android:id="@+id/bt_line_query"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/query" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/stop_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line_layout"
+        android:layout_marginTop="10.0dip"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stop_query"
+            android:textSize="20.0sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:text="@string/stop_query_wraning"
+                android:textSize="15.0sp" />
+
+            <EditText
+                android:id="@+id/et_stop"
+                android:layout_width="100.0dip"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="软件园" />
+
+            <Button
+                android:id="@+id/bt_stop_query"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/query" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stop_layout"
+        android:layout_marginTop="10.0dip"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change_query"
+            android:textSize="20.0sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:text="@string/change_query_from"
+                android:textSize="15.0sp" />
+
+            <EditText
+                android:id="@+id/et_change_from"
+                android:layout_width="95.0dip"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="软件园" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/change_query_to"
+                android:textSize="15.0sp" />
+
+            <EditText
+                android:id="@+id/et_change_to"
+                android:layout_width="95.0dip"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="火车站" />
+
+            <Button
+                android:id="@+id/bt_change_query"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/query" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

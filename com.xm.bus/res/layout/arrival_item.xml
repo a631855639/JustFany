@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_current_line"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff85b3e9"
+        android:textSize="23.0sp" />
+
+    <TextView
+        android:id="@+id/tv_current_stop"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23.0sp" />
+
+    <ImageView
+        android:id="@+id/bus_stop_image"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/hello_world" />
+
+    <TextView
+        android:id="@+id/tv_next_stop_info"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23.0sp" />
+
+    <TextView
+        android:id="@+id/tv_next_bus_info"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23.0sp" />
+
+</LinearLayout>
