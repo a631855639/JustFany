@@ -1,141 +1,257 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:baiduadsdk="http://schemas.android.com/apk/res/com.xm.bus"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical" >
-
-    <LinearLayout
-        android:id="@+id/line_layout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/line_query"
-            android:textSize="20.0sp" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10.0dip"
-                android:text="@string/line_query_wraning"
-                android:textSize="15.0sp" />
-
-            <EditText
-                android:id="@+id/et_line"
-                android:layout_width="100.0dip"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:text="690" />
-
-            <Button
-                android:id="@+id/bt_line_query"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/query" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/stop_layout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/line_layout"
-        android:layout_marginTop="10.0dip"
-        android:orientation="vertical" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/stop_query"
-            android:textSize="20.0sp" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10.0dip"
-                android:text="@string/stop_query_wraning"
-                android:textSize="15.0sp" />
-
-            <EditText
-                android:id="@+id/et_stop"
-                android:layout_width="100.0dip"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:text="软件园" />
-
-            <Button
-                android:id="@+id/bt_stop_query"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/query" />
-        </LinearLayout>
-    </LinearLayout>
+    android:layout_height="fill_parent" >
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/stop_layout"
-        android:layout_marginTop="10.0dip"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/search_main_background"
+        android:gravity="center_horizontal"
         android:orientation="vertical" >
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/line_layout"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/change_query"
-            android:textSize="20.0sp" />
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/line_query"
+                android:textColor="@android:color/black"
+                android:textSize="20.0sp" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="4" >
+
+                    <com.xm.bus.search.self.AutoCompleteAndClearTextView
+                        android:id="@+id/et_line"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/login_edittext_bg"
+                        android:completionHint="@string/completion_hint"
+                        android:completionHintView="@layout/completion_hint_view"
+                        android:completionThreshold="1"
+                        android:drawableLeft="@drawable/search_edit_indicator"
+                        android:drawableRight="@drawable/delete_selector"
+                        android:gravity="center"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textColor="@android:color/background_dark"
+                        android:hint="@string/line_query_wraning"
+                        android:singleLine="true" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1" >
+
+                    <Button
+                        android:id="@+id/bt_line_query"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/query"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/hello_world"
+            android:src="@drawable/dividing_line" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/stop_layout"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:layout_marginTop="10dip"
+            android:orientation="vertical" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10.0dip"
-                android:text="@string/change_query_from"
-                android:textSize="15.0sp" />
+                android:text="@string/stop_query"
+                android:textColor="@android:color/black"
+                android:textSize="20.0sp" />
 
-            <EditText
-                android:id="@+id/et_change_from"
-                android:layout_width="95.0dip"
+            <LinearLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:text="软件园" />
+                android:baselineAligned="false"
+                android:orientation="horizontal" >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/change_query_to"
-                android:textSize="15.0sp" />
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="4" >
 
-            <EditText
-                android:id="@+id/et_change_to"
-                android:layout_width="95.0dip"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:text="火车站" />
+                    <com.xm.bus.search.self.AutoCompleteAndClearTextView
+                        android:id="@+id/et_stop"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/login_edittext_bg"
+                        android:completionHint="@string/completion_hint"
+                        android:completionHintView="@layout/completion_hint_view"
+                        android:completionThreshold="1"
+                        android:drawableLeft="@drawable/search_edit_indicator"
+                        android:drawableRight="@drawable/delete_selector"
+                        android:gravity="center"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textColor="@android:color/background_dark"
+                        android:hint="@string/stop_query_wraning"
+                        android:singleLine="true" />
+                </LinearLayout>
 
-            <Button
-                android:id="@+id/bt_change_query"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/query" />
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1" >
+
+                    <Button
+                        android:id="@+id/bt_stop_query"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/query"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/hello_world"
+            android:src="@drawable/dividing_line" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/change_query"
+                android:textColor="@android:color/black"
+                android:textSize="20.0sp" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3" >
+
+                    <com.xm.bus.search.self.AutoCompleteAndClearTextView
+                        android:id="@+id/et_change_from"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/login_edittext_bg"
+                        android:completionHint="@string/completion_hint"
+                        android:completionHintView="@layout/completion_hint_view"
+                        android:completionThreshold="1"
+                        android:drawableLeft="@drawable/search_edit_indicator"
+                        android:drawableRight="@drawable/delete_selector"
+                        android:gravity="center"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textColor="@android:color/background_dark"
+                        android:hint="@string/start"
+                        android:singleLine="true" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/change_query_to"
+                        android:textColor="@android:color/black"
+                        android:textSize="15.0sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3" >
+
+                    <com.xm.bus.search.self.AutoCompleteAndClearTextView
+                        android:id="@+id/et_change_to"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/login_edittext_bg"
+                        android:completionHint="@string/completion_hint"
+                        android:completionHintView="@layout/completion_hint_view"
+                        android:completionThreshold="1"
+                        android:drawableLeft="@drawable/search_edit_indicator"
+                        android:drawableRight="@drawable/delete_selector"
+                        android:gravity="center"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:hint="@string/stop"
+                        android:textColor="@android:color/background_dark"
+                        android:singleLine="true" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2" >
+
+                    <Button
+                        android:id="@+id/bt_change_query"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/query"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/hello_world"
+            android:src="@drawable/dividing_line" />
+        <!-- <include layout="@layout/location_main"/> -->
     </LinearLayout>
+
+    <com.baidu.mobads.AdView
+        android:id="@+id/adView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        baiduadsdk:adId=""
+        baiduadsdk:adSize="0" />
 
 </RelativeLayout>

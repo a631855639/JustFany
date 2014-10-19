@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 import com.xm.bus.R;
+import com.xm.bus.common.base.HtmlChangeParse;
+import com.xm.bus.common.base.HtmlStopParse;
+import com.xm.bus.common.base.HtmlBaseParse.STATE;
+import com.xm.bus.common.ui.ExitApplication;
+import com.xm.bus.common.ui.LoadingDialog;
+import com.xm.bus.common.ui.RemindDialog;
 import com.xm.bus.search.common.SearchApp;
-import com.xm.bus.search.self.ExitApplication;
-import com.xm.bus.search.self.LoadingDialog;
-import com.xm.bus.search.self.RemindDialog;
-import com.xm.bus.search.utils.HtmlBaseParse.STATE;
-import com.xm.bus.search.utils.HtmlChangeParse;
-import com.xm.bus.search.utils.HtmlStopParse;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -45,7 +45,7 @@ public class SourceStopActivity extends ListActivity{
 		Intent intent=getIntent();
 		sourceStopList=(List<Map<String, String>>) intent.getSerializableExtra("sourceStopList");
 		
-		tv_relation_stop_warning.setText("与出发地("+myApp.getFrom()+")"+HtmlStopParse.titleInfo1);
+		tv_relation_stop_warning.setText("与出发地("+myApp.getFrom()+")相关的车站有"+sourceStopList.size()+"个");
 		SimpleAdapter adapter=new SimpleAdapter(this, sourceStopList, R.layout.relation_stop_select_item, new String[]{"relationStopName"}, new int[]{R.id.relationStopName});
 		lv_relation_stop_content.setAdapter(adapter);
 	}
@@ -75,10 +75,10 @@ public class SourceStopActivity extends ListActivity{
 		new AsyncTask<Integer, Void, STATE>() {
 			int type=0;
 			protected  STATE doInBackground(Integer... maps) {
-				STATE result=HtmlChangeParse.getDestinationStop(myApp.getTo());
-				if(HtmlChangeParse.destinationStopList.size()==1){//目的地相关站点只有一个
-					myApp.setTo(HtmlChangeParse.destinationStopList.get(0).get("relationStopName"));
-					result=HtmlChangeParse.getChangePlans(myApp.getFrom(), myApp.getTo());
+				STATE result=HtmlChangeParse.getInstance(SourceStopActivity.this).getDestinationStop(myApp.getTo());
+				if(HtmlChangeParse.getInstance(SourceStopActivity.this).getDestinationStopList().size()==1){//目的地相关站点只有一个
+					myApp.setTo(HtmlChangeParse.getInstance(SourceStopActivity.this).getDestinationStopList().get(0).get("relationStopName"));
+					result=HtmlChangeParse.getInstance(SourceStopActivity.this).getChangePlans(myApp.getFrom(), myApp.getTo());
 					type=1;
 				}
 				return result;
@@ -90,10 +90,10 @@ public class SourceStopActivity extends ListActivity{
 				}else if(result==STATE.Success){
 					Intent intent=new Intent();
 					if(type==1){//目的地相关站点只有一个
-						intent.putExtra("planLineList", (Serializable)HtmlChangeParse.planLineList);
+						intent.putExtra("planLineList", (Serializable)HtmlChangeParse.getInstance(SourceStopActivity.this).getPlanLineList());
 						intent.setClass(SourceStopActivity.this, PlansLineActivity.class);
 					}else{
-						intent.putExtra("destinationStopList", (Serializable)HtmlChangeParse.destinationStopList);
+						intent.putExtra("destinationStopList", (Serializable)HtmlChangeParse.getInstance(SourceStopActivity.this).getDestinationStopList());
 						intent.setClass(SourceStopActivity.this, DestinationStopActivity.class);
 					}
 					startActivity(intent);

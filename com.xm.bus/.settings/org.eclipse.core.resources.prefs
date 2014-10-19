@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//src/com/xm/bus/common/Constant.java=GBK
+encoding//src/com/xm/bus/common/db/DBHelper.java=UTF-8
+encoding//src/com/xm/bus/search/self/AutoCompleteAdapter.java=UTF-8
+encoding//src/com/xm/bus/search/self/AutoCompleteAndClearTextView.java=UTF-8
+encoding//src/com/xm/bus/search/self/ElasticScrollView.java=UTF-8

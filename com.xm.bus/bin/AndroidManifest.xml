@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xm.bus"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="2.0" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -14,11 +14,12 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    
+    <uses-permission android:name="android.permission.VIBRATE"/>
     <application
         android:name="com.xm.bus.common.MyApplication"
         android:allowBackup="true"
@@ -37,40 +38,61 @@
             android:configChanges="keyboard|keyboardHidden|orientation" />
 - 
         <activity
-            android:name="com.xm.bus.MainActivity"
-            android:label="@string/app_name" >
-- 
+            android:name="com.xm.bus.MainDrawerActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light"
+            android:windowSoftInputMode="stateVisible|adjustPan|stateHidden"
+             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.xm.bus.SearchActivity" />
-        <activity android:name="com.xm.bus.LocationActivity" />
-        <activity android:name="com.xm.bus.search.line.SelectLineActivity" />
-        <activity android:name="com.xm.bus.search.line.StopInLineActivity" />
-        <activity android:name="com.xm.bus.search.common.ArrivalActivity" />
-        <activity android:name="com.xm.bus.search.stop.RelationStopActivity" />
-        <activity android:name="com.xm.bus.search.stop.RelationLineActivity" />
-        <activity android:name="com.xm.bus.search.change.SourceStopActivity" />
-        <activity android:name="com.xm.bus.search.change.DestinationStopActivity" />
-        <activity android:name="com.xm.bus.search.change.PlansLineActivity" />
-        <activity android:name="com.xm.bus.search.change.PlanDetailActivity" />
-
+        <activity android:name="com.xm.bus.SearchActivity" 
+            android:screenOrientation="portrait"
+            />
+        <activity android:name="com.xm.bus.LocationActivity" 
+             android:screenOrientation="portrait"/>
+        <activity android:name="com.xm.bus.search.line.SelectLineActivity"
+             android:screenOrientation="portrait" />
+        <activity android:name="com.xm.bus.search.line.StopInLineActivity" 
+             android:screenOrientation="portrait"/>
+        <activity android:name="com.xm.bus.search.common.ArrivalActivity" 
+             android:screenOrientation="portrait"/>
+        <activity android:name="com.xm.bus.search.stop.RelationStopActivity" 
+             android:screenOrientation="portrait"/>
+        <activity android:name="com.xm.bus.search.stop.RelationLineActivity" 
+             android:screenOrientation="portrait"/>
+        <activity android:name="com.xm.bus.search.change.SourceStopActivity" 
+             android:screenOrientation="portrait"/>
+        <activity android:name="com.xm.bus.search.change.DestinationStopActivity" 
+             android:screenOrientation="portrait"/>
+        <activity android:name="com.xm.bus.search.change.PlansLineActivity" 
+             android:screenOrientation="portrait"/>
+        <activity android:name="com.xm.bus.search.change.PlanDetailActivity" 
+             android:screenOrientation="portrait"/>
+        <activity android:name="com.xm.bus.MainFragment" 
+             android:screenOrientation="portrait"/>
+		 <activity android:name="com.xm.bus.location.ui.LocationMap"
+		     android:screenOrientation="portrait"
+            />
+		 <activity android:name="com.xm.bus.common.ui.GuidePager"
+		     android:screenOrientation="portrait"
+            />
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote" />
-
-        <activity
-            android:name="com.xm.bus.location.ui.LocationMap"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
-        <activity
-            android:name="com.xm.bus.location.ui.DrawerMainActivity"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <receiver android:name="com.xm.bus.search.common.RemindWidget"
+         >
+             <intent-filter>     
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />  
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"    
+                       android:resource="@xml/widget_provider"    
+            /> 
+        </receiver>
+       <service android:name="com.xm.bus.common.service.UpdateWidgetServie"></service>
     </application>
     
-    
-
 </manifest>

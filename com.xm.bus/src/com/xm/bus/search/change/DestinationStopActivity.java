@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 import com.xm.bus.R;
+import com.xm.bus.common.base.HtmlChangeParse;
+import com.xm.bus.common.base.HtmlStopParse;
+import com.xm.bus.common.base.HtmlBaseParse.STATE;
+import com.xm.bus.common.ui.ExitApplication;
+import com.xm.bus.common.ui.LoadingDialog;
+import com.xm.bus.common.ui.RemindDialog;
 import com.xm.bus.search.common.SearchApp;
-import com.xm.bus.search.self.ExitApplication;
-import com.xm.bus.search.self.LoadingDialog;
-import com.xm.bus.search.self.RemindDialog;
-import com.xm.bus.search.utils.HtmlBaseParse.STATE;
-import com.xm.bus.search.utils.HtmlChangeParse;
-import com.xm.bus.search.utils.HtmlStopParse;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -45,7 +45,7 @@ public class DestinationStopActivity extends ListActivity{
 		Intent intent=getIntent();
 		destinationStopList=(List<Map<String, String>>) intent.getSerializableExtra("destinationStopList");
 		
-		tv_relation_stop_warning.setText("与目的地("+myApp.getTo()+")"+HtmlStopParse.titleInfo1);
+		tv_relation_stop_warning.setText("与目的地("+myApp.getTo()+")相关的车站有"+destinationStopList.size());
 		SimpleAdapter adapter=new SimpleAdapter(this, destinationStopList, R.layout.relation_stop_select_item, new String[]{"relationStopName"}, new int[]{R.id.relationStopName});
 		lv_relation_stop_content.setAdapter(adapter);
 	}
@@ -74,7 +74,7 @@ public class DestinationStopActivity extends ListActivity{
 		
 		new AsyncTask<Void, Void, STATE>() {
 			protected  STATE doInBackground(Void... maps) {
-				STATE result=HtmlChangeParse.getChangePlans(myApp.getFrom(), myApp.getTo());
+				STATE result=HtmlChangeParse.getInstance(DestinationStopActivity.this).getChangePlans(myApp.getFrom(), myApp.getTo());
 				return result;
 			};
 			protected void onPostExecute(STATE result) {
@@ -83,7 +83,7 @@ public class DestinationStopActivity extends ListActivity{
 					Toast.makeText(DestinationStopActivity.this, "对不起，服务器正在维护，请稍后再试", Toast.LENGTH_SHORT).show();
 				}else if(result==STATE.Success){
 					Intent intent=new Intent();
-					intent.putExtra("planLineList", (Serializable)HtmlChangeParse.planLineList);
+					intent.putExtra("planLineList", (Serializable)HtmlChangeParse.getInstance(DestinationStopActivity.this).getPlanLineList());
 					intent.setClass(DestinationStopActivity.this, PlansLineActivity.class);
 					startActivity(intent);
 				}else if(result==STATE.NetworkError){

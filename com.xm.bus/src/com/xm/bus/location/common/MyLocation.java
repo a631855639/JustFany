@@ -22,50 +22,55 @@ public class MyLocation implements Destroyable {
 				this.context.getApplicationContext());
 		this.mLocClient.setAK("pGMEW4fzUg34mQkKVegKcEY0");
 		this.mLocClient.registerLocationListener(new MyLocationListener());
-		LocationClientOption localLocationClientOption = new LocationClientOption();
-		localLocationClientOption.setOpenGps(true);
-		localLocationClientOption.setPriority(1);
-		localLocationClientOption.setCoorType("bd09ll");
-		localLocationClientOption.setAddrType("all");
-		localLocationClientOption.setProdName("厦门实时公交查询");
-		this.mLocClient.setLocOption(localLocationClientOption);
-		this.mLocClient.start();
+		LocationClientOption option = new LocationClientOption();
+		option.setOpenGps(true);//打开GPS
+		option.setPriority(LocationClientOption.GpsFirst);//优先使用GPS定位,提高准确度
+		option.setCoorType("bd09ll");
+		option.setAddrType("all");//设置获取地址的详细信息
+		option.setProdName("厦门实时公交查询");
+		mLocClient.setLocOption(option);
+		mLocClient.start();
+	}
+	/**
+	 * 定位监听函数
+	 */
+	class MyLocationListener implements BDLocationListener {
+		MyLocationListener() {
+		}
+
+		public void onReceiveLocation(BDLocation bDLocation) {
+			onDoAfter(bDLocation);
+		}
+
+		public void onReceivePoi(BDLocation paramBDLocation) {
+		}
+	}
+	/**
+	 * 设置回调函数
+	 */
+	public void setDoAfterListener(DoAfterListener doAfterListener) {
+		this.doAfterListener = doAfterListener;
+		this.mLocClient.requestLocation();
+	}
+	public interface DoAfterListener {
+		public abstract void onDoAfter(BDLocation bDLocation);
+	}
+	
+	private void onDoAfter(BDLocation bDLocation) {
+		if (this.doAfterListener != null){
+			this.doAfterListener.onDoAfter(bDLocation);
+		}
 	}
 
-	private void onDoAfter(BDLocation paramBDLocation) {
-		if (this.doAfterListener != null)
-			this.doAfterListener.onDoAfter(paramBDLocation);
-	}
-
+	@Override
 	public void destroy() {
 		if (this.mLocClient != null) {
 			this.mLocClient.stop();
 			this.mLocClient = null;
 		}
 	}
-
+	@Override
 	public boolean isDestroyed() {
 		return false;
-	}
-
-	public void setDoAfterListener(DoAfterListener paramDoAfterListener) {
-		this.doAfterListener = paramDoAfterListener;
-		this.mLocClient.requestLocation();
-	}
-
-	public static abstract interface DoAfterListener {
-		public abstract void onDoAfter(BDLocation paramBDLocation);
-	}
-
-	class MyLocationListener implements BDLocationListener {
-		MyLocationListener() {
-		}
-
-		public void onReceiveLocation(BDLocation paramBDLocation) {
-			MyLocation.this.onDoAfter(paramBDLocation);
-		}
-
-		public void onReceivePoi(BDLocation paramBDLocation) {
-		}
 	}
 }

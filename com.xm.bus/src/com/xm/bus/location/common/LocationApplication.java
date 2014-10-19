@@ -22,7 +22,15 @@ public class LocationApplication extends SearchApp {
 	}
 	
 	public void initEngineManager(Context context) {
+		/**
+         * 使用地图sdk前需先初始化BMapManager.
+         * BMapManager是全局的，可为多个MapView共用，它需要地图模块创建前创建，
+         * 并在地图地图模块销毁后销毁，只要还有地图模块在使用，BMapManager就不应该销毁
+         */
         if (mBMapManager == null) {
+        	/**
+             * 如果BMapManager没有初始化则初始化BMapManager
+             */
             mBMapManager = new BMapManager(context);
         }
 
@@ -42,8 +50,8 @@ public class LocationApplication extends SearchApp {
         @Override
         public void onGetNetworkState(int iError) {
             if (iError == MKEvent.ERROR_NETWORK_CONNECT) {
-                Toast.makeText(LocationApplication.getInstance().getApplicationContext(), "您的网络出错啦！",
-                    Toast.LENGTH_LONG).show();
+                /*Toast.makeText(LocationApplication.getInstance().getApplicationContext(), "您的网络信号不太好！",
+                    Toast.LENGTH_LONG).show();*/
             }
             else if (iError == MKEvent.ERROR_NETWORK_DATA) {
                 Toast.makeText(LocationApplication.getInstance().getApplicationContext(), "输入正确的检索条件！",

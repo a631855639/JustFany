@@ -18,3 +18,18 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-keep class com.baidu.mobads.** {
+  public protected *;
+}
+-keep class org.jsoup.** {
+  *;
+}
+-keep class com.baidu.** {
+   *;
+}
+-keep class com.baidu.location.** {
+   *;
+}
+-keep class vi.com.gdi.bgl.android.java.** {
+   *;
+}

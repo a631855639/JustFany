@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"    
+    android:orientation="horizontal"    
+    android:layout_width="fill_parent"    
+    android:layout_height="wrap_content"  
+    android:gravity="center"
+    android:id="@+id/remind_layout"
+    android:background="@drawable/bus_appwidget_bg"
+    >
+   <!--  <ImageView 
+        android:layout_width="wrap_content"      
+    	android:layout_height="wrap_content"
+    	android:id="@+id/closed"
+    	android:src="@drawable/icon_naozhong"
+    	android:contentDescription="@string/hello_world"
+        /> -->
+	<TextView       
+	    android:layout_width="0dip"    
+	    android:layout_height="wrap_content"
+	    android:layout_weight="4"
+	    android:textSize="20sp"
+	    android:id="@+id/remind_text"
+	    android:background="@drawable/search_edit_normal"
+	    android:gravity="center" 
+	    />
+	<ImageView 
+	    android:id="@+id/cancle"
+	    android:layout_width="0dip"   
+	    android:layout_weight="1"   
+    	android:layout_height="wrap_content" 
+    	android:src="@drawable/delete_selector"
+    	android:contentDescription="@string/hello_world"
+	    />
+</LinearLayout>

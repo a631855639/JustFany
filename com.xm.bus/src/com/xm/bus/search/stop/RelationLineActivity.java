@@ -14,15 +14,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xm.bus.R;
+import com.xm.bus.common.Constant;
 import com.xm.bus.common.MyApplication;
+import com.xm.bus.common.base.HtmlStopParse;
+import com.xm.bus.common.base.HtmlBaseParse.STATE;
+import com.xm.bus.common.ui.ExitApplication;
+import com.xm.bus.common.ui.LoadingDialog;
+import com.xm.bus.common.ui.RemindDialog;
 import com.xm.bus.search.common.ArrivalActivity;
 import com.xm.bus.search.common.SearchApp;
-import com.xm.bus.search.self.ExitApplication;
-import com.xm.bus.search.self.LoadingDialog;
-import com.xm.bus.search.self.RemindDialog;
-import com.xm.bus.search.utils.Constant;
-import com.xm.bus.search.utils.HtmlBaseParse.STATE;
-import com.xm.bus.search.utils.HtmlStopParse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,9 +42,9 @@ public class RelationLineActivity extends ListActivity {
 		
 		Intent intent=getIntent();
 		relationLineList=(List<Map<String, String>>) intent.getSerializableExtra("relationLine");
-		
+		String stopName=intent.getStringExtra("stopName");
 		tv_relationLineWarning=(TextView) findViewById(R.id.tv_relation_line_warning);
-		tv_relationLineWarning.setText(HtmlStopParse.titleInfo2);
+		tv_relationLineWarning.setText(stopName+"公交线路列表");
 		
 		lv_relationLineContent=(ListView) findViewById(android.R.id.list);
 		SimpleAdapter adapter=new SimpleAdapter(this, relationLineList, R.layout.relation_line_select_item, new String[]{"relationLineName"}, new int[]{R.id.relationLineName});
@@ -80,7 +80,7 @@ public class RelationLineActivity extends ListActivity {
 		new AsyncTask<Map<String, String>, Void, STATE>() {
 			@Override
 			protected STATE doInBackground(Map<String, String>... params) {
-				STATE result=HtmlStopParse.getArrivalInfo(params[0]);
+				STATE result=HtmlStopParse.getInstance(RelationLineActivity.this).getArrivalInfo(params[0]);
 				return result;
 			}
 			

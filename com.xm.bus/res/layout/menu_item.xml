@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="fill_parent"
+     android:layout_height="fill_parent"
+     >
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/background_light"
+    android:orientation="vertical" >
+	<RelativeLayout
+	    android:id="@+id/refresh_layout"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="8dip"
+	    android:layout_marginBottom="8dip"
+	    android:layout_gravity="center"
+	    >
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dip"
+        android:layout_centerInParent="true"
+        android:drawableTop="@drawable/menu_ring"
+        android:gravity="center"
+        android:text="@string/menu_refresh"
+        android:textSize="12sp" />
+        <Spinner 
+            android:id="@+id/refresh_time"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="10dip"
+	        android:layout_alignParentRight="true"
+	        android:entries="@array/refresh_times"
+	        android:prompt="@string/refresh_tip"
+            />
+	</RelativeLayout>
+	<ImageView
+	    android:layout_width="fill_parent"
+	    android:layout_height="1dp"
+	    android:background="@android:color/darker_gray"
+	    android:contentDescription="@string/hello_world" />
+	<RelativeLayout
+	    android:id="@+id/early_stops_layout"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="8dip"
+	    android:layout_marginBottom="8dip"
+	    android:orientation="horizontal" >
+			<TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_gravity="center"
+	        android:layout_marginLeft="20dip"
+	        android:layout_centerInParent="true"
+	        android:drawableTop="@drawable/menu_stops"
+	        android:gravity="center"
+	        android:text="@string/menu_remind"
+	        android:textSize="12sp" />
+	        <Spinner 
+	            android:id="@+id/remind_stops"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentRight="true"
+		        android:layout_marginRight="10dip"
+		        android:entries="@array/stops"
+		        android:prompt="@string/remind_tip"
+	            />
+	</RelativeLayout>
+	<ImageView
+	    android:layout_width="fill_parent"
+	    android:layout_height="1dp"
+	    android:background="@android:color/darker_gray"
+	    android:contentDescription="@string/hello_world" />
+	<RelativeLayout
+	    android:id="@+id/history_record_layout"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="8dip"
+	    android:layout_marginBottom="8dip"
+	    android:orientation="horizontal" >
+			<TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_gravity="center"
+	        android:layout_marginLeft="20dip"
+	        android:layout_centerInParent="true"
+	        android:drawableTop="@drawable/menu_history"
+	        android:gravity="center"
+	        android:text="@string/menu_history"
+	        android:textSize="12sp" />
+	        <Spinner 
+	            android:id="@+id/history_limit"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentRight="true"
+		        android:layout_marginRight="10dip"
+		        android:entries="@array/history_limit"
+		        android:prompt="@string/history_tip"
+	            />
+	</RelativeLayout>
+	<ImageView
+	    android:layout_width="fill_parent"
+	    android:layout_height="1dp"
+	    android:background="@android:color/darker_gray"
+	    android:contentDescription="@string/hello_world" />
+	<RelativeLayout
+	    android:id="@+id/ring_layout"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="8dip"
+	    android:layout_marginBottom="8dip"
+	    android:orientation="horizontal" >
+		<TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_gravity="center"
+	        android:layout_marginLeft="20dip"
+	        android:layout_centerInParent="true"
+	        android:drawableTop="@drawable/menu_rings"
+	        android:gravity="center"
+	        android:text="@string/menu_ring"
+	        android:textSize="12sp" />
+	    <ImageView
+	        android:id="@+id/ring_set"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_gravity="center"
+	        android:layout_marginRight="15dip"
+	        android:gravity="center"
+	        android:background="@drawable/set_on"
+	        android:layout_centerInParent="true"
+	        android:contentDescription="@string/hello_world"
+	        />
+	</RelativeLayout>
+	<ImageView
+	    android:layout_width="fill_parent"
+	    android:layout_height="1dp"
+	    android:background="@android:color/darker_gray"
+	    android:contentDescription="@string/hello_world" />
+	<RelativeLayout
+	    android:id="@+id/vibrate_layout"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="8dip"
+	    android:layout_marginBottom="8dip"
+	    android:orientation="horizontal" >
+		<TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_gravity="center"
+	        android:layout_marginLeft="20dip"
+	        android:layout_centerInParent="true"
+	        android:drawableTop="@drawable/menu_vibrate"
+	        android:gravity="center"
+	        android:text="@string/menu_vibrate"
+	        android:textSize="12sp" />
+	    <ImageView
+	        android:id="@+id/vibrate_set"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_gravity="center"
+	        android:layout_marginRight="15dip"
+	        android:gravity="center"
+	        android:background="@drawable/set_on"
+	        android:layout_centerInParent="true"
+	        android:contentDescription="@string/hello_world"
+	        />
+	</RelativeLayout>
+	<ImageView
+	    android:layout_width="fill_parent"
+	    android:layout_height="1dp"
+	    android:background="@android:color/darker_gray"
+	    android:contentDescription="@string/hello_world" />
+	<!-- <RelativeLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="10dip"
+	    android:layout_marginBottom="10dip"
+	    android:orientation="horizontal" >
+		<TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_gravity="center"
+	        android:layout_marginLeft="20dip"
+	        android:layout_centerInParent="true"
+	        android:gravity="center"
+	        android:text="@string/other"
+	        android:textColor="@android:color/darker_gray"
+	        android:textSize="20sp" />
+	</RelativeLayout>
+	<ImageView
+	    android:layout_width="fill_parent"
+	    android:layout_height="1dp"
+	    android:background="@android:color/darker_gray"
+	    android:contentDescription="@string/hello_world" /> -->
+	<RelativeLayout
+	    android:id="@+id/clear_layout"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="8dip"
+	    android:background="@drawable/layout_selector"
+	    android:layout_marginBottom="8dip"
+	    android:orientation="horizontal" >
+		<ImageView 
+		    android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_gravity="center"
+	        android:layout_marginLeft="20dip"
+	        android:layout_centerInParent="true"
+	        android:src="@drawable/menu_clear"
+	        android:gravity="center"
+	        android:contentDescription="@string/hello_world"
+		    />
+		<TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_gravity="center"
+	        android:layout_marginRight="15dip"
+	        android:layout_centerInParent="true"
+	        android:gravity="center"
+	        android:text="@string/menu_clear_cache"
+	        android:textSize="20sp" />
+	</RelativeLayout>
+	<ImageView
+	    android:layout_width="fill_parent"
+	    android:layout_height="1dp"
+	    android:background="@android:color/darker_gray"
+	    android:contentDescription="@string/hello_world" />
+	<RelativeLayout
+	    android:id="@+id/update_layout"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="8dip"
+	    android:background="@drawable/layout_selector"
+	    android:layout_marginBottom="8dip"
+	    android:orientation="horizontal" >
+		<ImageView 
+		    android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_gravity="center"
+	        android:layout_marginLeft="20dip"
+	        android:layout_centerInParent="true"
+	        android:src="@drawable/menu_update"
+	        android:gravity="center"
+	        android:contentDescription="@string/hello_world"
+		    />
+		<TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_gravity="center"
+	        android:layout_marginRight="15dip"
+	        android:layout_centerInParent="true"
+	        android:gravity="center"
+	        android:text="@string/menu_check_update"
+	        android:textSize="20sp" />
+	</RelativeLayout>
+	<ImageView
+	    android:layout_width="fill_parent"
+	    android:layout_height="1dp"
+	    android:background="@android:color/darker_gray"
+	    android:contentDescription="@string/hello_world" />
+	<RelativeLayout
+	    android:id="@+id/feedback_layout"
+	    android:background="@drawable/layout_selector"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="10dip"
+	    android:layout_marginBottom="10dip"
+	    android:orientation="horizontal" >
+		<ImageView 
+		    android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_gravity="center"
+	        android:layout_marginLeft="20dip"
+	        android:layout_centerInParent="true"
+	        android:src="@drawable/menu_feedback"
+	        android:gravity="center"
+	        android:contentDescription="@string/hello_world"
+		    />
+		<TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_gravity="center"
+	        android:layout_marginRight="15dip"
+	        android:layout_centerInParent="true"
+	        android:gravity="center"
+	        android:text="@string/mune_feedback"
+	        android:textSize="20sp" />
+	</RelativeLayout>
+	<ImageView
+	    android:layout_width="fill_parent"
+	    android:layout_height="1dp"
+	    android:background="@android:color/darker_gray"
+	    android:contentDescription="@string/hello_world" />
+	<RelativeLayout
+	    android:id="@+id/about_layout"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:background="@drawable/layout_selector"
+	    android:layout_marginTop="12dip"
+	    android:layout_marginBottom="12dip"
+	    android:orientation="horizontal" >
+		<ImageView 
+		    android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_gravity="center"
+	        android:layout_marginLeft="20dip"
+	        android:layout_centerInParent="true"
+	        android:src="@drawable/menu_about"
+	        android:gravity="center"
+	        android:contentDescription="@string/hello_world"
+		    />
+		<TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_gravity="center"
+	        android:layout_marginRight="15dip"
+	        android:layout_centerInParent="true"
+	        android:gravity="center"
+	        android:text="@string/menu_about"
+	        android:textSize="20sp" />
+	</RelativeLayout>
+	<ImageView
+	    android:layout_width="fill_parent"
+	    android:layout_height="1dp"
+	    android:background="@android:color/darker_gray"
+	    android:contentDescription="@string/hello_world" />
+	<RelativeLayout
+	    android:id="@+id/quit_layout"
+	    android:background="@drawable/layout_selector"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="12dip"
+	    android:layout_marginBottom="12dip"
+	    android:orientation="horizontal" >
+		<ImageView 
+		    android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_gravity="center"
+	        android:layout_marginLeft="20dip"
+	        android:layout_centerInParent="true"
+	        android:src="@drawable/menu_quit"
+	        android:gravity="center"
+	        android:contentDescription="@string/hello_world"
+		    />
+		<TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_gravity="center"
+	        android:layout_marginRight="15dip"
+	        android:layout_centerInParent="true"
+	        android:gravity="center"
+	        android:text="@string/menu_quit"
+	        android:textSize="20sp" />
+	</RelativeLayout>
+	<ImageView
+	    android:layout_width="fill_parent"
+	    android:layout_height="1dp"
+	    android:background="@android:color/darker_gray"
+	    android:contentDescription="@string/hello_world" />
+</LinearLayout>
+</ScrollView>

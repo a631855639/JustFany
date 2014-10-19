@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:baiduadsdk="http://schemas.android.com/apk/res/com.xm.bus"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    >
+    <LinearLayout 
+        android:layout_width="0dip"
+    	android:layout_height="0dip"
+    	android:focusable="true"
+    	android:focusableInTouchMode="true"
+        ></LinearLayout>
+<LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_alignParentTop="true"
     android:orientation="vertical" >
-
+	<include layout="@layout/actionbar_menu_item"/>
 	<com.baidu.mapapi.map.MapView 
 	    android:id="@+id/bmapView"
 		android:layout_width="fill_parent" 
@@ -11,3 +23,11 @@
 		android:clickable="true"     
 	/>
 </LinearLayout>
+<!-- <com.baidu.mobads.AdView android:id="@+id/adView"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentLeft="true"  
+		baiduadsdk:adSize="0"
+		baiduadsdk:adId = "" /> -->
+</RelativeLayout>

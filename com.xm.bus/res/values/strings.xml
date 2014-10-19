@@ -1,32 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-	   <string name="action_settings">Settings</string>
-	   <string name="hello_world">Hello world!</string>
-	   <string name="app_name">厦门实时公交</string> 
+	  <string name="action_settings">Settings</string>
+	  <string name="app_name">厦门实时公交</string> 
 	  <string name="logo">厦门实时公交查询，欢迎使用!</string> 
-	  <string name="action_settings">Settings</string> 
-	  <string name="action_quit">退出</string> 
+	  <string name="action_quit">退出</string>
+	  <string name="action_about">关于</string>
 	  <string name="action_remind">操作提示</string> 
-	  <string name="action_about">关于</string> 
 	  <string name="action_back">返回</string> 
 	  <string name="about_description">这是我的第一个应用</string> 
 	  <string name="hello_world">Hello world!</string> 
 	  <string name="query">查询</string> 
 	  <string name="line_query">按线路查询：</string> 
-	  <string name="line_query_wraning">要乘坐的线路：</string> 
+	  <string name="line_query_wraning">要乘坐的线路</string> 
 	  <string name="stop_query">按站点查询：</string> 
-	  <string name="stop_query_wraning">所在的站点名：</string> 
+	  <string name="stop_query_wraning">所在的站点名</string> 
 	  <string name="change_query">按换乘查询：</string> 
 	  <string name="change_query_from">从</string> 
 	  <string name="change_query_to">到</string> 
+	  <string name="start">起始站</string>
+	  <string name="stop">终点站</string>
 	  <string name="tip">要查询的站点</string> 
-    	
-	  <string-array name="left_array">
-		  <item>首页</item> 
-		  <item>设置</item> 
-		  <item>返回</item> 
-		  <item>关于</item> 
-		  <item>退出</item> 
+      <string name="completion_hint">最近搜索的%1$d条记录</string>
+	  <string name="location">定位</string>
+	  <string-array name="refresh_times">
+		  <item>10秒</item> 
+		  <item>15秒</item> 
+		  <item>20秒</item> 
+		  <item>30秒</item> 
+		  <item>60秒</item> 
       </string-array>
+      <string-array name="stops">
+          <item>0站</item> 
+		  <item>1站</item> 
+		  <item>2站</item> 
+		  <item>3站</item> 
+		  <item>4站</item> 
+      </string-array>
+      <string-array name="history_limit">
+          <item>3条</item> 
+		  <item>5条</item> 
+		  <item>8条</item> 
+		  <item>10条</item> 
+		  <item>15条</item> 
+      </string-array>
+      
+      <string name="menu_refresh">刷新频率</string>
+      <string name="menu_remind">提前几站</string>
+      <string name="menu_ring">是否响铃</string>
+      <string name="menu_vibrate">是否震动</string>
+      <string name="menu_history">搜索记录</string>
+      <string name="other">其他</string>
+      <string name="mune_feedback">意见反馈</string>
+      <string name="menu_clear_cache">清理缓存</string>
+      <string name="menu_check_update">检测更新</string>
+      <string name="menu_quit">退出</string>
+	  <string name="menu_about">关于</string>
+      
+	  <string name="loading">下载中，请稍等</string>
+	  <string name="remind">到站提醒</string>
+	  <string name="pull_refresh">下拉刷新</string>
+	  <string name="last_refresh">上次更新</string>
+	  <string name="refresh_tip">提示：刷新越频繁，越耗电量</string>
+	  <string name="remind_tip">提示：越早提醒，才不会错过</string>
+	  <string name="history_tip">提示：保存搜索记录个数</string>
+	  <string name="clear_tip">清除缓存将会初始化软件的设置，是否确定清除？</string>
+	  
+	  <string name="feedback_text">
+	      \t\t感谢您提出的宝贵意见和建议，您的每一条建议都将帮助我进步！\n
+	      \t\t联系方式：\n
+	      \t\tQQ：<b>631855639</b>\n
+	      \t\tCSDN博客：<b>http://blog.csdn.net/it_talk</b>\n\n
+	      \t\t\t\t\t\t\t\t——————by\t画虎烂
+	  </string>
+	  <string name="page1_tips">
+	      \t\t支持线路查询、站点查询、换乘查询：\n\n
+	      \t\t<b>线路查询：</b>输入你需要搭乘的公交线路，即可获取实时到站信息\n\n
+	      \t\t<b>站点查询：</b>输入你要查询的站点名称，即可获取相关站点信息\n\n
+	      \t\t<b>换乘查询：</b>输入你要查询的起始站点和目的地站点，即可获取两地站点的换乘方案\n\n
+	  </string>
+	  <string name="page2_tips">
+	      \t\t查询某条公交线路，并选择你所在的站点后，即可获取公交距离该站点的实时信息\n\n
+	      \t\t<b>提示：该页面支持下拉刷新功能，若想刷新公交距离该站点的实时信息，下拉即可</b>
+	  </string>
+	  <string name="page3_tips">
+	      \t\t公交实时到站查询<b>支持桌面小控件</b>哦，设置到站提醒后，即可在桌面看到公交实时到站信息哦。
+	                        在车站无聊等候时，开启到站提醒后，公交到站时会有提醒哦，你可以放心的去做自己的事情了~\n\n
+	      \t\t<b>提示：长按桌面可以为软件添加桌面小控件</b>
+	  </string>
+	  <string name="page4_tips">
+	      \t\t是否还在为不知道搭什么车，附近有哪些站点，而烦恼？快去使用定位功能吧!
+	  </string>
+	  <string name="page5_tips">
+	      \t\t软件设置介绍：\n\n
+	      \t\t<b>刷新频率：</b>开启到站提醒后，每隔一段时间刷新以获取公交到站信息\n\n
+	      \t\t<b>提前几站：</b>公交距离你所在的站点差几站时提醒你\n\n
+	      \t\t<b>搜索记录：</b>最多显示你最近搜索过的记录的条数\n\n
+	      \t\t<b>是否响铃：</b>公交到站时是否响铃提醒\n\n
+	      \t\t<b>是否震动：</b>公交到站时是否震动提醒\n\n
+	      \t\t<b>清理缓存：</b>清除软件的一些数据，如：软件设置，搜索记录等\n
+	  </string>
+	  <string name="start_using">开始使用</string>
 </resources>

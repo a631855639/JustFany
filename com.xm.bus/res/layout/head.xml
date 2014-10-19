@@ -44,14 +44,14 @@
                 android:id="@+id/head_tipsTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="下拉更新"
+                android:text="@string/pull_refresh"
                 android:textSize="15.0sp" />
 
             <TextView
                 android:id="@+id/head_lastUpdatedTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="上次更新"
+                android:text="@string/last_refresh"
                 android:textSize="12.0sp" />
         </LinearLayout>
     </RelativeLayout>

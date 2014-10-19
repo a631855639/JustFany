@@ -11,6 +11,18 @@ public class ArrivalInfo implements Serializable {
 	private String nextTime;
 	private Bitmap pic;
 	private String stopsNum;
+	
+	public ArrivalInfo(){}
+	public ArrivalInfo(String currLine, String currentStation,
+			String kilometers, String nextTime, Bitmap pic, String stopsNum) {
+		super();
+		this.currLine = currLine;
+		this.currentStation = currentStation;
+		this.kilometers = kilometers;
+		this.nextTime = nextTime;
+		this.pic = pic;
+		this.stopsNum = stopsNum;
+	}
 
 	public String getCurrLine() {
 		return this.currLine;

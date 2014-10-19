@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"    
+    android:orientation="horizontal"    
+    android:layout_width="fill_parent"    
+    android:layout_height="wrap_content"  
+    android:gravity="center"
+    android:id="@+id/widget_layout"
+    android:background="@drawable/bus_appwidget_bg"
+    >
+    <!-- <ImageView 
+        android:layout_width="0dip"      
+    	android:layout_height="wrap_content" 
+    	android:layout_weight="1"
+    	android:src="@drawable/bus_launcher"
+    	android:contentDescription="@string/hello_world"
+        /> -->
+	<TextView       
+	    android:layout_width="120dip"    
+	    android:layout_height="wrap_content"
+	    android:textSize="12sp"
+	    android:background="@drawable/search_edit_normal"
+	    android:gravity="center" 
+	    />
+	<ImageView 
+	    android:layout_width="wrap_content"    
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="5dip"
+	    android:layout_marginRight="5dip"
+	    android:src="@drawable/bus_appwidget_right_arrow"
+	    android:contentDescription="@string/hello_world"
+	    />
+	<TextView       
+	    android:layout_width="120dip"    
+	    android:layout_height="wrap_content"
+	    android:textSize="12sp"
+	    android:background="@drawable/search_edit_normal"
+	    android:gravity="center" 
+	    />
+	<ImageView 
+	    android:layout_marginLeft="10dip"
+	    android:layout_width="wrap_content"    
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/bus_appwidget_search"
+	    android:contentDescription="@string/hello_world"
+	    />
+</LinearLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/logo"
+        android:maxHeight="142dp"
+        android:maxWidth="1080dp"
+        android:src="@drawable/logo" />
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/logo" >
+		
+        <FrameLayout
+            android:id="@+id/main_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
+
+                <FrameLayout
+                    android:id="@+id/realtabcontent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="1" />
+
+                <android.support.v4.app.FragmentTabHost
+                    android:id="@android:id/tabhost"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <FrameLayout
+                        android:id="@android:id/tabcontent"
+                        android:layout_width="0dip"
+                        android:layout_height="0dip"
+                        android:layout_weight="0" />
+                </android.support.v4.app.FragmentTabHost>
+            </LinearLayout>
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/left_drawer"
+            android:layout_width="240dip"
+            android:layout_height="fill_parent"
+            android:layout_gravity="start"
+            android:background="@android:color/background_light"
+            android:orientation="vertical" >
+
+            <include layout="@layout/menu_item" />
+        </LinearLayout>
+    </android.support.v4.widget.DrawerLayout>
+
+</RelativeLayout>

@@ -1,9 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@android:id/text1"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical"
-    android:paddingLeft="16.0dip"
-    android:paddingRight="16.0dip"
-    android:textColor="#ffffffff" />
+    >
+    <LinearLayout 
+        android:id="@+id/item_layout"
+        android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+        >
+       <ImageView
+           android:layout_marginTop="10dp"
+           android:layout_marginBottom="10dp"
+	       android:id="@+id/mune_item_image"
+	       android:layout_width="0dp"
+	       android:layout_weight="1"
+		   android:layout_height="wrap_content"
+		   android:src="@drawable/menu_quit"
+		   android:contentDescription="@string/hello_world"
+           />
+       <TextView
+           android:id="@+id/mune_item_text"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:layout_marginTop="10dp"
+           android:layout_marginBottom="10dp"
+           android:gravity="center"
+           android:textSize="20sp"
+           android:textColor="@android:color/darker_gray"
+           android:text="@string/action_quit" />
+		</LinearLayout>
+	    <ImageView 
+	        android:layout_below="@id/item_layout"
+		    android:layout_width="fill_parent"
+		    android:layout_height="1dp"
+		    android:background="@drawable/dividing_line"
+		    android:contentDescription="@string/hello_world"
+		    />
+</RelativeLayout>
+

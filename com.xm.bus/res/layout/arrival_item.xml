@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical" >
-
+    <LinearLayout 
+        android:id="@+id/content_layout"
+        android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:orientation="vertical"
+        >
     <TextView
         android:id="@+id/tv_current_line"
         android:layout_width="fill_parent"
@@ -15,24 +21,69 @@
         android:id="@+id/tv_current_stop"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:textSize="23.0sp" />
 
     <ImageView
         android:id="@+id/bus_stop_image"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:contentDescription="@string/hello_world" />
 
     <TextView
         android:id="@+id/tv_next_stop_info"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:textSize="23.0sp" />
 
     <TextView
         android:id="@+id/tv_next_bus_info"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:textSize="23.0sp" />
-
+     <LinearLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_gravity="center"
+        >
+        <ImageView 
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:src="@drawable/menu_ring"
+        	android:contentDescription="@string/hello_world"
+            />
+        <Button 
+            android:id="@+id/remind"
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="@string/remind"
+            />
+    </LinearLayout>
+    </LinearLayout>
+    <LinearLayout 
+	    android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:layout_gravity="center"
+    	android:gravity="center"
+    	android:orientation="horizontal"
+    	android:visibility="gone"
+    	android:id="@+id/loading_layout"
+	    >
+	    <ProgressBar
+	        android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+	        />
+	    <TextView 
+	        android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_marginLeft="10dip"
+    		android:text="@string/loading"
+	        />
+	</LinearLayout>
 </LinearLayout>

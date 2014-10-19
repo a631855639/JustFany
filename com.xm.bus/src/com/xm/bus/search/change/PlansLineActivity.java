@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import com.xm.bus.R;
+import com.xm.bus.common.base.HtmlChangeParse;
+import com.xm.bus.common.base.HtmlBaseParse.STATE;
+import com.xm.bus.common.ui.ExitApplication;
+import com.xm.bus.common.ui.LoadingDialog;
+import com.xm.bus.common.ui.RemindDialog;
 import com.xm.bus.search.common.SearchApp;
-import com.xm.bus.search.self.ExitApplication;
-import com.xm.bus.search.self.LoadingDialog;
-import com.xm.bus.search.self.RemindDialog;
-import com.xm.bus.search.utils.HtmlBaseParse.STATE;
-import com.xm.bus.search.utils.HtmlChangeParse;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -44,7 +44,7 @@ public class PlansLineActivity extends ListActivity {
 		plansLineList=(List<Map<String, String>>) intent.getSerializableExtra("planLineList");
 		
 		head_info=(TextView) findViewById(R.id.tv_plans_line_warning);
-		head_info.setText(HtmlChangeParse.titleInfo1);
+		head_info.setText(myApp.getFrom()+"→"+myApp.getTo());
 		
 		lv_content=(ListView) findViewById(android.R.id.list);
 		SimpleAdapter adapter=new SimpleAdapter(this, plansLineList, R.layout.plans_line_select_item, new String[]{"changeLineName"}, new int[]{R.id.planLineName});
@@ -76,7 +76,7 @@ public class PlansLineActivity extends ListActivity {
 		new AsyncTask<Integer, Void, STATE>() {
 			@Override
 			protected STATE doInBackground(Integer... params) {
-				STATE result=HtmlChangeParse.getChangeDetail(planLineMap,myApp.getFrom(),myApp.getTo());
+				STATE result=HtmlChangeParse.getInstance(PlansLineActivity.this).getChangeDetail(planLineMap,myApp.getFrom(),myApp.getTo());
 				return result;
 			}
 			protected void onPostExecute(STATE result) {
@@ -85,7 +85,8 @@ public class PlansLineActivity extends ListActivity {
 					Toast.makeText(PlansLineActivity.this, "对不起，服务器正在维护，请稍后再试", Toast.LENGTH_SHORT).show();
 				}else if(result==STATE.Success){
 					Intent intent=new Intent();
-					intent.putExtra("planDetaiList", (Serializable)HtmlChangeParse.changeDetailList);
+					intent.putExtra("planDetaiList", (Serializable)HtmlChangeParse.getInstance(PlansLineActivity.this).getChangeDetailList());
+					intent.putExtra("changeLineName", planLineMap.get("changeLineName"));
 					intent.setClass(PlansLineActivity.this, PlanDetailActivity.class);
 					startActivity(intent);
 				}else if(result==STATE.NetworkError){

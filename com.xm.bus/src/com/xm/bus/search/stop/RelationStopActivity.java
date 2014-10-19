@@ -14,11 +14,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xm.bus.R;
-import com.xm.bus.search.self.ExitApplication;
-import com.xm.bus.search.self.LoadingDialog;
-import com.xm.bus.search.self.RemindDialog;
-import com.xm.bus.search.utils.HtmlBaseParse.STATE;
-import com.xm.bus.search.utils.HtmlStopParse;
+import com.xm.bus.common.base.HtmlStopParse;
+import com.xm.bus.common.base.HtmlBaseParse.STATE;
+import com.xm.bus.common.ui.ExitApplication;
+import com.xm.bus.common.ui.LoadingDialog;
+import com.xm.bus.common.ui.RemindDialog;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +29,7 @@ public class RelationStopActivity extends ListActivity {
 	private ListView lv_relation_stop_content=null;
 	private TextView tv_relation_stop_warning=null;
 	private List<Map<String, String>> relationStopList=null;
+	private Map<String, String> map;
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class RelationStopActivity extends ListActivity {
 		Intent intent=getIntent();
 		relationStopList=(List<Map<String, String>>) intent.getSerializableExtra("relationStopList");
 		
-		tv_relation_stop_warning.setText(HtmlStopParse.titleInfo1);
+		tv_relation_stop_warning.setText("找到以下"+relationStopList.size()+"个相关站点");
 		SimpleAdapter adapter=new SimpleAdapter(this, relationStopList, R.layout.relation_stop_select_item, new String[]{"relationStopName"}, new int[]{R.id.relationStopName});
 		lv_relation_stop_content.setAdapter(adapter);
 	}
@@ -66,13 +68,13 @@ public class RelationStopActivity extends ListActivity {
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		Map<String, String> map=new HashMap<String, String>();
+		map=new HashMap<String, String>();
 		map=relationStopList.get(position);
 		LoadingDialog.getInstance(this).show();
 		
 		new AsyncTask<Map<String, String>, Void, STATE>() {
 			protected  STATE doInBackground(Map<String, String>... maps) {
-				STATE result=HtmlStopParse.getRelationLine(maps[0]);
+				STATE result=HtmlStopParse.getInstance(RelationStopActivity.this).getRelationLine(maps[0]);
 				return result;
 			};
 			protected void onPostExecute(STATE result) {
@@ -81,7 +83,8 @@ public class RelationStopActivity extends ListActivity {
 					Toast.makeText(RelationStopActivity.this, "对不起，服务器正在维护，请稍后再试", Toast.LENGTH_SHORT).show();
 				}else if(result==STATE.Success){
 					Intent intent=new Intent();
-					intent.putExtra("relationLine", (Serializable)HtmlStopParse.relationLineList);
+					intent.putExtra("relationLine", (Serializable)HtmlStopParse.getInstance(RelationStopActivity.this).getRelationLineList());
+					intent.putExtra("stopName", map.get("relationStopName"));
 					intent.setClass(RelationStopActivity.this, RelationLineActivity.class);
 					startActivity(intent);
 					//Toast.makeText(RelationStopActivity.this, "操作成功", Toast.LENGTH_SHORT).show();

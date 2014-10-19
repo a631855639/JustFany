@@ -5,14 +5,14 @@ import java.util.List;
 import java.util.Map;
 
 import com.xm.bus.R;
+import com.xm.bus.common.Constant;
+import com.xm.bus.common.base.HtmlStopParse;
+import com.xm.bus.common.base.HtmlBaseParse.STATE;
+import com.xm.bus.common.ui.ExitApplication;
+import com.xm.bus.common.ui.LoadingDialog;
+import com.xm.bus.common.ui.RemindDialog;
 import com.xm.bus.search.common.ArrivalActivity;
 import com.xm.bus.search.common.SearchApp;
-import com.xm.bus.search.self.ExitApplication;
-import com.xm.bus.search.self.LoadingDialog;
-import com.xm.bus.search.self.RemindDialog;
-import com.xm.bus.search.utils.Constant;
-import com.xm.bus.search.utils.HtmlBaseParse.STATE;
-import com.xm.bus.search.utils.HtmlChangeParse;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -44,11 +44,11 @@ public class PlanDetailActivity extends ListActivity {
 		
 		Intent intent=getIntent();
 		planDetaiList=(List<Map<String, String>>) intent.getSerializableExtra("planDetaiList");
-		
+		String lineName=intent.getStringExtra("changeLineName");
 		head_info=(TextView) findViewById(R.id.head_plan_detail_info);
-		head_info.setText(HtmlChangeParse.titleInfo1);
+		head_info.setText(myApp.getFrom()+"¡ú"+myApp.getTo());
 		plan_title=(TextView) findViewById(R.id.plan_title);
-		plan_title.setText(HtmlChangeParse.titleInfo2);
+		plan_title.setText(lineName);
 		
 		lv_content=(ListView) findViewById(android.R.id.list);
 		SimpleAdapter adapter=new SimpleAdapter(this, planDetaiList, R.layout.plan_line_detail_item, new String[]{"relationLineName", "up","down"},new int[]{R.id.plan_line_name,R.id.up,R.id.down});
@@ -81,7 +81,7 @@ public class PlanDetailActivity extends ListActivity {
 		new AsyncTask<Map<String, String>, Void, STATE>() {
 			@Override
 			protected STATE doInBackground(Map<String, String>... params) {
-				STATE result=HtmlChangeParse.getArrivalInfo(params[0]);
+				STATE result=HtmlStopParse.getInstance(PlanDetailActivity.this).getArrivalInfo(params[0]);
 				return result;
 			}
 			
